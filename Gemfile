@@ -41,14 +41,21 @@ gem 'devise'
 gem 'materialize-sass'
 # A simple Rails wrapper for Google Material Icons
 gem 'material_icons'
-# A library for generating fake data such as names, addresses, and phone numbers.
-gem 'ffaker'
+
+
+group :test do
+  # factory_bot_rails provides Rails integration for factory_bot.
+  gem 'factory_bot_rails'
+  # A library for generating fake data such as names, addresses, and phone numbers.
+  gem 'ffaker'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  # factory_bot_rails provides Rails integration for factory_bot.
-  gem 'factory_bot_rails'
+  #rspec-rails is a testing framework for Rails 3.x, 4.x and 5.0.
+  gem 'rspec-rails', '~> 3.5'
+
 end
 
 group :development do
