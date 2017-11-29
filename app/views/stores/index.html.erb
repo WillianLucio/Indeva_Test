@@ -1,6 +1,5 @@
-<%=  render "shared/sidebar" %>
 <div class="row cards">
-  <div class="col m10 offset-m1 l10 offset-l2 s12">
+  <div class="col m10 offset-m1 s12">
     <% @stores.each do |s| %>
       <% @store = s %>
       <%= render "stores/show_store" %>
