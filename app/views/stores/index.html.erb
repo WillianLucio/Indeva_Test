@@ -1,1 +1,14 @@
 <%=  render "shared/sidebar" %>
+<div class="row cards">
+  <div class="col m10 offset-m1 l10 offset-l2 s12 teste">
+    <%= render "stores/show" %>
+  </div>
+</div>
+
+<div class="fixed-action-btn stores-btn">
+  <%= form_tag("/stores", method: "POST") do %>
+    <button class="btn-floating btn-large blue pulse" type="submit">
+      <i class="large material-icons">add</i>
+    </button>
+  <% end %>
+</div>
