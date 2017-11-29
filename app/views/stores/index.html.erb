@@ -1,13 +1,16 @@
 <%=  render "shared/sidebar" %>
 <div class="row cards">
-  <div class="col m10 offset-m1 l10 offset-l2 s12 teste">
-    <%= render "stores/show" %>
+  <div class="col m10 offset-m1 l10 offset-l2 s12">
+    <% @stores.each do |s| %>
+      <% @store = s %>
+      <%= render "stores/show_store" %>
+    <% end %>
   </div>
 </div>
 
 <div class="fixed-action-btn stores-btn">
-  <%= form_tag("/stores", method: "POST") do %>
-    <button class="btn-floating btn-large blue pulse" type="submit">
+  <%= form_tag("/stores/0", method: "GET") do %>
+    <button  class="btn-floating btn-large blue pulse" type="submit">
       <i class="large material-icons">add</i>
     </button>
   <% end %>
