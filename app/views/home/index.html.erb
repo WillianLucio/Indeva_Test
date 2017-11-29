@@ -1,16 +1,12 @@
-<% if current_user %>
-  <%= render "shared/sidebar" %>
-<% else %>
-  <div class="row home">
-    <div class="center">
-      <h4 class="title">Estabeleça e acompanhe metas diárias para sua loja e vendedores</h4>
-      <h5 class="subtitle">De qualquer lugar você acompanha o resutlado do seu negócio</h5>
-      <h5 class="subtitle2">Rápido, fácil e garantido <i class="material-icons home-icon">favorite</i></h5>
+<div class="row home">
+  <div class="center">
+    <h4 class="title">Estabeleça e acompanhe metas diárias para sua loja e vendedores</h4>
+    <h5 class="subtitle">De qualquer lugar você acompanha o resutlado do seu negócio</h5>
+    <h5 class="subtitle2">Rápido, fácil e garantido <i class="material-icons home-icon">favorite</i></h5>
 
 
-    <%= form_tag("/stores", method: "post") do %>
-      <%= submit_tag("Criar agora", class: "waves-effect waves-light btn home-button") %>
-    <% end %>
-    </div>
+  <%= form_tag("/users/sign_up", method: "GET") do %>
+    <%= submit_tag("Criar agora", class: "waves-effect waves-light btn home-button") %>
+  <% end %>
   </div>
-<% end %>
+</div>
