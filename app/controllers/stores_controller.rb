@@ -1,10 +1,11 @@
 class StoresController < ApplicationController
-  before_action :set_store, only: [:new, :edit, :show, :update, :destroy]
+  before_action :set_store, only: [:edit, :show, :update, :destroy]
 
   def show
   end
 
   def new
+    @store = Store.new
   end
 
   def edit
@@ -47,11 +48,7 @@ class StoresController < ApplicationController
   private
 
   def set_store
-    if params.has_key?(:id) && params[:id].to_i != 0
       @store = Store.find(params[:id])
-    else
-      @store = Store.new
-    end
   end
 
   def store_params
