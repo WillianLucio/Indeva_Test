@@ -41,6 +41,8 @@ gem 'devise'
 gem 'materialize-sass'
 # A simple Rails wrapper for Google Material Icons
 gem 'material_icons'
+# Brings back `assigns` and `assert_template` to your Rails tests
+gem 'rails-controller-testing'
 
 
 group :test do
