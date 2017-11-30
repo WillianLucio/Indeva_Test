@@ -1,7 +1,13 @@
 class StoresController < ApplicationController
-  before_action :set_store, only: [:show, :update, :destroy]
+  before_action :set_store, only: [:new, :edit, :show, :update, :destroy]
 
   def show
+  end
+
+  def new
+  end
+
+  def edit
   end
 
   def index
