@@ -1,15 +1,19 @@
-<div class="card horizontal">
-  <div class="card-content col s12">
-    <%= form_for @store do |f| %>
-      <div class="row">
-        <div class="input-field col s12">
-          <%= f.text_field :name, 'data-length': "20" %>
-          <label for="Name">Name</label>
-        </div>
+<div class="row cards">
+  <div class="col m10 offset-m1 l10 offset-l2 s12">
+    <div class="card horizontal">
+      <div class="card-content col s12">
+        <%= form_for @store do |f| %>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.text_field :name, 'data-length': "20" %>
+              <label for="Name">Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <button type='submit' class="btn blue right">save</button>
+          </div>
+        <% end %>
       </div>
-      <div class="row">
-        <button type='submit' class="btn blue right">save</button>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
