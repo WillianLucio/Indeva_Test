@@ -12,6 +12,16 @@
           <div class="row">
             <button type='submit' class="btn blue right">save</button>
           </div>
+
+          <% if @store.errors.any? %>
+            <div id="error_explanation">
+              <ul>
+              <% @store.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
