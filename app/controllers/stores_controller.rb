@@ -1,5 +1,5 @@
 class StoresController < ApplicationController
-  before_action :authenticate_user!, except: [:opened]
+  before_action :authenticate_user!
   before_action :set_store, only: [:edit, :show, :update, :destroy]
 
   def show
@@ -62,5 +62,4 @@ class StoresController < ApplicationController
   def store_params
     params.require(:store).permit(:name).merge(user: current_user)
   end
-
 end
