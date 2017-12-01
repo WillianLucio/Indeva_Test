@@ -1,4 +1,5 @@
 class StoresController < ApplicationController
+  before_action :authenticate_user!, except: [:opened]
   before_action :set_store, only: [:edit, :show, :update, :destroy]
 
   def show
@@ -22,7 +23,7 @@ class StoresController < ApplicationController
       if @store.save
         format.html { redirect_to "/stores" }
       else
-        format.html { redirect_to main_app.root_url, notice: @store.errors }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -30,9 +31,9 @@ class StoresController < ApplicationController
   def update
     respond_to do |format|
       if @store.update(store_params)
-          format.html { redirect_to "/stores" }
+        format.html { redirect_to "/stores" }
       else
-        format.html { redirect_to main_app.root_url, notice: @store.errors }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -48,7 +49,13 @@ class StoresController < ApplicationController
   private
 
   def set_store
-      @store = Store.find(params[:id])
+    @store = Store.find(params[:id])
+
+    if @store.user.id == current_user.id
+      @store
+    else
+      @store = Store.new
+    end
   end
 
   def store_params
