@@ -9,7 +9,7 @@ RSpec.describe StoresController, type: :controller do
     sign_in @current_user
   end
 
-  describe "GET #index" do
+  describe "GET #index" do 
     context "user is owner the stores" do
       before(:each) do
         create(:store)
