@@ -9,7 +9,7 @@ RSpec.describe StoresController, type: :controller do
     sign_in @current_user
   end
 
-  describe "GET #index" do 
+  describe "GET #index" do
     context "user is owner the stores" do
       before(:each) do
         create(:store)
@@ -53,7 +53,7 @@ RSpec.describe StoresController, type: :controller do
     it "user is not owner" do
       store = create(:store)
       get :show, params: {id: store.id}
-      expect(assigns(:store).id).to eql(nil)
+      expect(response).to have_http_status(:forbidden)
     end
   end
 
@@ -104,6 +104,13 @@ RSpec.describe StoresController, type: :controller do
         expect(Store.last).to have_attributes(@store_attributes)
       end
     end
+
+    it "user is not owner" do
+      @store = create(:store)
+      @store_attributes = attributes_for(:store)
+      put :update, params: {id: @store.id, store: @store_attributes}
+      expect(response).to have_http_status(:forbidden)
+    end
   end
 
   describe "GET #destroy" do
@@ -120,6 +127,12 @@ RSpec.describe StoresController, type: :controller do
       it "the store was deleted" do
           expect(Store.all).to_not include(@store)
       end
+    end
+
+    it "user is not owner" do
+      @store = create(:store)
+      delete :destroy, params: {id: @store.id}
+      expect(response).to have_http_status(:forbidden)
     end
   end
 

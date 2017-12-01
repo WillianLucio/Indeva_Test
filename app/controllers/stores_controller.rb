@@ -51,10 +51,11 @@ class StoresController < ApplicationController
   def set_store
     @store = Store.find(params[:id])
 
-    if @store.user.id == current_user.id
-      @store
-    else
+    if @store.user.id != current_user.id
       @store = Store.new
+      respond_to do |format|
+        format.html { render :index, status: :forbidden }
+      end
     end
   end
 
