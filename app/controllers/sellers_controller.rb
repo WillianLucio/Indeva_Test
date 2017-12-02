@@ -2,11 +2,17 @@ class SellersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_seller, only: [:edit, :show, :update, :destroy]
 
+  def index
+    @sellers =  Seller.where(store_id: params[:store_id])
+    @store = Store.find(params[:store_id])
+  end
+
   def show
   end
 
   def new
     @seller = Seller.new
+    @seller.store_id = params[:store_id]
   end
 
   def edit
@@ -17,7 +23,7 @@ class SellersController < ApplicationController
 
     respond_to do |format|
       if @seller.save
-        format.html { redirect_to "/sellers" }
+        format.html { redirect_to "/store/sellers/#{@seller.store_id}" }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -27,7 +33,7 @@ class SellersController < ApplicationController
   def update
     respond_to do |format|
       if @seller.update(seller_params)
-        format.html { redirect_to "/sellers" }
+        format.html { redirect_to "/store/sellers/#{@seller.store_id}" }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -38,7 +44,7 @@ class SellersController < ApplicationController
     @seller.destroy
 
     respond_to do |format|
-      format.html { redirect_to "/sellers" }
+      format.html { redirect_to "/store/sellers/#{@seller.store_id}" }
     end
   end
 
