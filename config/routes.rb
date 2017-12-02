@@ -1,21 +1,8 @@
 Rails.application.routes.draw do
-  get 'sellers/show'
-
-  get 'sellers/new'
-
-  get 'sellers/edit'
-
-  get 'sellers/index'
-
-  get 'sellers/create'
-
-  get 'sellers/update'
-
-  get 'sellers/destroy'
-
-  get 'sellers/raffle'
-
   root to: 'home#index'
   resources :stores
+  resources :sellers, except: [:index, :new]
+  get 'store/sellers/:store_id' => 'sellers#index'
+  get '/sellers/new/:store_id' => 'sellers#new'
   devise_for :users, :controllers => { registrations: 'registrations' }
 end
