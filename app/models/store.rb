@@ -4,5 +4,5 @@ class Store < ApplicationRecord
   validates_length_of :name, maximum: 20
   validates_uniqueness_of :name, :scoope => :user_id
 
-  has_many :sellers
+  has_many :sellers, dependent: :destroy
 end
