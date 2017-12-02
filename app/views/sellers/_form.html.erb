@@ -1,0 +1,30 @@
+<div class="row cards">
+  <div class="col m10 offset-m1 l10 offset-l2 s12">
+    <div class="card horizontal">
+      <div class="card-content col s12">
+        <%= form_for @seller do |f| %>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.text_field :name, 'data-length': "50" %>
+              <%= f.hidden_field :store_id %>
+              <label for="Name">Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <button type='submit' class="btn blue right">save</button>
+          </div>
+
+          <% if @seller.errors.any? %>
+            <div id="error_explanation">
+              <ul>
+              <% @seller.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

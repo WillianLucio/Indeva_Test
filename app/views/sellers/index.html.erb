@@ -1,0 +1,37 @@
+<%= render "shared/sidebar" %>
+<div class="row chat">
+  <div class="col m10 offset-m1 l10 offset-l2 s12">
+    <table class="striped responsive-table">
+      <thead>
+        <tr>
+          <th><%= @sellers.model.human_attribute_name("id") %></th>
+          <th><%= @sellers.model.human_attribute_name("name") %></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @sellers.each do |seller| %>
+          <tr>
+            <td><%= "4".rjust(seller.id, '0') %></td>
+            <td><%= seller.name %></td>
+            <td>
+              <%= form_for seller, method: 'DELETE' do |f| %>
+               <button type='submit' class="btn red right btn-delete-seller">Destroy</button>
+              <% end %>
+
+              <a href="<%= "/sellers/#{seller.id}/edit" %>" class="btn yellow darken-1 right">Edit</a>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="fixed-action-btn">
+  <%= form_tag("/sellers/new/#{@store.id}", method: "GET") do %>
+    <button  class="btn-floating btn-large blue pulse" type="submit">
+      <i class="large material-icons">add</i>
+    </button>
+  <% end %>
+</div>
