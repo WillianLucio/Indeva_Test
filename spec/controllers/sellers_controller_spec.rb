@@ -43,7 +43,7 @@ RSpec.describe SellersController, type: :controller do
       end
 
       it "redirect for /sellers" do
-        expect(response).to redirect_to('/sellers')
+        expect(response).to redirect_to("/store/sellers/#{@seller.store_id}")
       end
 
       it "seller created with datas correct" do
@@ -69,7 +69,7 @@ RSpec.describe SellersController, type: :controller do
     end
 
     it "redirect to /sellers" do
-      expect(response).to redirect_to('/sellers')
+      expect(response).to redirect_to("/store/sellers/#{@seller.store_id}")
     end
 
     it "the data was updated correctly" do
@@ -85,7 +85,7 @@ RSpec.describe SellersController, type: :controller do
     end
 
     it "redirec to /sellers" do
-      expect(response).to redirect_to('/sellers')
+      expect(response).to redirect_to("/store/sellers/#{@seller.store_id}")
     end
 
     it "the store was deleted" do
