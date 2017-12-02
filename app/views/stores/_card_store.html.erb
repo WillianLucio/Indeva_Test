@@ -2,7 +2,7 @@
   <div class="card-content col s12">
     <span class="store-title col s12"><%= @store.name %></span>
     <%= form_for @store, method: 'DELETE' do |f| %>
-       <button type='submit' class="btn btn red right">Destroy</button>
+       <button type='submit' class="btn red right">Destroy</button>
     <% end %>
     <a href="<%= "/stores/#{@store.id}/edit" %>" class="btn yellow darken-1 right">Edit</a>
     <a href="<%= "/stores/#{@store.id}" %>" class="btn right">Enter</a >
